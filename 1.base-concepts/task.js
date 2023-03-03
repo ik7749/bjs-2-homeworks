@@ -6,10 +6,8 @@ function solveEquation(a, b, c) {
 
   if (D < 0) {
     tmp = [];
-
   } else if (D === 0){
     tmp.push(-b / (2 * a));
-
   } else {
     tmp.push((-b + Math.sqrt(D) ) / (2 * a));
     tmp.push((-b - Math.sqrt(D) ) / (2 * a));
