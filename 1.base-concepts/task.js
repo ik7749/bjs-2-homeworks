@@ -1,22 +1,24 @@
 'use strict';
 // задача №1
 function solveEquation(a, b, c) {
-	let res = [];
 	let D = b * b - 4 * a * c;
-	console.log('D = ' + D);
-	if (D < 0) {
-			res.push();
-		} else	if (D === 0) {
-			res["quadratic roots"] = (-b + Math.sqrt(D)) / (2 * a);
-		} else if (D > 0) {
-			let tmp = [];
-			tmp.push((-b + Math.sqrt(D)) / (2 * a));
-			tmp.push((-b - Math.sqrt(D)) / (2 * a));
-			res["quadratic roots"] = tmp;
-	}
-	return res;
+  let tmp = [];
+
+  if (D < 0) {
+    tmp = [];
+
+  } else if (D === 0){
+    tmp.push(-b / (2 * a));
+
+  } else {
+    tmp.push((-b + Math.sqrt(D) ) / (2 * a));
+    tmp.push((-b - Math.sqrt(D) ) / (2 * a));
+  }
+  return tmp;
 }
 console.log(solveEquation(1,-2,-3));
+console.log(solveEquation(1,12,36))
+console.log(solveEquation(1,2,20))
 
 // задача №2
 function calculateTotalMortgage(percent, contribution, amount ,countMonths){
