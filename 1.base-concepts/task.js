@@ -1,16 +1,14 @@
 'use strict';
 // задача №1
 function solveEquation(a, b, c) {
-	let D = b * b - 4 * a * c;
+	let d = b * b - 4 * a * c;
   let tmp = [];
 
-  if (D < 0) {
-    tmp = [];
-  } else if (D === 0){
+  if (d === 0) {
     tmp.push(-b / (2 * a));
-  } else {
-    tmp.push((-b + Math.sqrt(D) ) / (2 * a));
-    tmp.push((-b - Math.sqrt(D) ) / (2 * a));
+  } else if (d > 0) {
+    tmp.push((-b + Math.sqrt(d) ) / (2 * a));
+    tmp.push((-b - Math.sqrt(d) ) / (2 * a));
   }
   return tmp;
 }
@@ -20,7 +18,11 @@ console.log(solveEquation(1,2,20));
 
 // задача №2
 function calculateTotalMortgage(percent, contribution, amount ,countMonths){
-	if(isNaN(percent)){
+
+  if (isNaN(percent) || isNaN(contribution) || isNaN(amount) || isNaN(countMonths)) {
+    return false;
+  }
+  /*	if(isNaN(percent)){
     return false;
     };
     if(isNaN(contribution)){
@@ -32,11 +34,11 @@ function calculateTotalMortgage(percent, contribution, amount ,countMonths){
     if(isNaN(countMonths)){
     return false;
     };
-
+*/
 	let totalAmount; // общая сумма
-	let S = amount - contribution; // сумма кредита - первоначальный взнос = тело кредита
-	let P = percent / 12 / 100; // процентная ставка
-	let monthlyPayment = S * (P + (P / (((1 + P)**countMonths) - 1))); /*Платеж = S * (P + (P / (((1 + P)^n) - 1))),  где: S - тело кредита, P - 1/12 процентной ставки (от 0 до 1), n - количество месяцев ^ - возведение в степень
+	let s = amount - contribution; // сумма кредита - первоначальный взнос = тело кредита
+	let p = percent / 12 / 100; // процентная ставка
+	let monthlyPayment = s * (p + (p / (((1 + p)**countMonths) - 1))); /*Платеж = S * (P + (P / (((1 + P)^n) - 1))),  где: S - тело кредита, P - 1/12 процентной ставки (от 0 до 1), n - количество месяцев ^ - возведение в степень
 	*/
 	totalAmount = Number((monthlyPayment * countMonths).toFixed(2));
 	return totalAmount; 
