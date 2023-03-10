@@ -32,7 +32,7 @@ class Magazine extends PrintEditionItem {
 }
 class Book extends PrintEditionItem {
   constructor(author, name, releaseDate, pagesCount, state, type) {
-    super(author, name, releaseDate, pagesCount, state, type);
+    super(name, releaseDate, pagesCount, state, type);
     this.author = author;
     this.type = "book";
   }
@@ -105,7 +105,7 @@ findBookBy(type, value) {
 giveBookByName(bookName) {
   const book = this.findBookBy('name', bookName);
   const bookIndex = this.books.indexOf(book);
-  if (bookIndex == 1) {
+  if (bookIndex !== -1) {
     this.books.splice(bookIndex, 1);
       return book;
     }
